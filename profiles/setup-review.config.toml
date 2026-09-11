@@ -1,0 +1,3 @@
+# Select with: codex --profile setup-review
+sandbox_mode = "read-only"
+approval_policy = "on-request"

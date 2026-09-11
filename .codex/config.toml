@@ -1,0 +1,2 @@
+# This trusted-project layer intentionally inherits personal model and permissions.
+project_doc_max_bytes = 32768

@@ -1,0 +1,8 @@
+# Opt-in example only; not installed by default.
+prefix_rule(
+    pattern = ["gh", "pr", "view"],
+    decision = "prompt",
+    justification = "Review the repository and requested PR before external access.",
+    match = ["gh pr view 123"],
+    not_match = ["gh pr list", "gh pr merge 123"],
+)

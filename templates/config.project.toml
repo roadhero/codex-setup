@@ -1,0 +1,3 @@
+# Optional trusted-project configuration. Omit settings that match global defaults.
+# Do not set CODEX_HOME to this directory: it is a config layer, not a user home.
+project_doc_max_bytes = 32768

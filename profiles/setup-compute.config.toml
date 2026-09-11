@@ -1,0 +1,4 @@
+# Select with: codex --profile setup-compute
+# Hardware and toolchain belong in project AGENTS.md, not personal permissions.
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"

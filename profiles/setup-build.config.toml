@@ -1,0 +1,3 @@
+# Select with: codex --profile setup-build
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"

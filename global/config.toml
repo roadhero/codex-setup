@@ -1,0 +1,9 @@
+# Personal baseline. The installer adds missing settings and preserves existing ones.
+# Model/provider/reasoning are inherited from your selected Codex model.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3

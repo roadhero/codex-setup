@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible setup, installation, or runtime problem.
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Versions and platform
+      description: Kit version, Codex version, Python version, and operating system.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Minimal commands, expected behavior, and actual behavior. Redact private paths and credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Redacted diagnostics
+      description: Relevant error messages only. Do not upload authentication files or install backups.
