@@ -73,7 +73,8 @@ python3 scripts/install.py --project /absolute/path/to/repo --stack android
 python3 scripts/install.py --project /absolute/path/to/repo --stack android --apply
 ```
 
-The project option also performs global installation. Existing instructions are
+With `--apply`, the project option also performs global installation; otherwise
+it previews both scopes without writing files. Existing instructions are
 preserved; replace starter guidance with real project facts. Supported stacks are
 `web`, `android`, `ios`, and `compute`. It never initializes Git, publishes a
 project, or grants project trust. See [project setup](docs/projects.md).
@@ -96,7 +97,7 @@ python3 scripts/install.py --hooks
 python3 scripts/install.py --hooks --apply
 ```
 
-Restart Codex and review/trust the definition in `/hooks`. The hook provides
+Restart Codex and review/trust the definition using the `/hooks` slash command. The hook provides
 whitespace feedback after `apply_patch`; it never rewrites files and is not a
 commit guard or secret scanner. Use project Git hooks and CI for mandatory gates.
 [Hook behavior and limitations](docs/hooks.md).

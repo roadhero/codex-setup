@@ -184,14 +184,21 @@ def restore(manifest, execute=False):
         if before is not None and (Path(before).name != before or before in {'.', '..'}):
             raise ValueError('Invalid backup filename')
         data = (manifest.parent / before).read_bytes() if before is not None else None
-        prepared.append((path, data, record['mode']))
-    for path, data, mode in prepared:
-        print('RESTORE' if data is not None else 'REMOVE CREATED FILE', path)
-        if execute:
-            if data is None:
-                path.unlink()
-            else:
-                atomic_write(path, data, mode)
+        prepared.append((path, data, record['mode'], path.read_bytes(), path.stat().st_mode & 0o777))
+    completed = []
+    try:
+        for path, data, mode, installed, installed_mode in prepared:
+            print('RESTORE' if data is not None else 'REMOVE CREATED FILE', path)
+            if execute:
+                if data is None:
+                    path.unlink()
+                else:
+                    atomic_write(path, data, mode)
+                completed.append((path, installed, installed_mode))
+    except OSError:
+        for path, installed, installed_mode in reversed(completed):
+            atomic_write(path, installed, installed_mode)
+        raise
 
 
 def main():

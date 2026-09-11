@@ -124,6 +124,27 @@ class InstallationTests(unittest.TestCase):
                 installer.apply(changes, self.codex / 'setup-backups')
         self.assertFalse((self.codex / 'AGENTS.md').exists())
 
+    def test_restore_failure_rolls_back_completed_restorations(self):
+        self.codex.mkdir()
+        (self.codex / 'config.toml').write_text('model = "personal-model"\n')
+        changes = installer.plan(self.home, self.codex)
+        manifest = installer.apply(changes, self.codex / 'setup-backups')
+        installed = {path: (path.read_bytes(), path.stat().st_mode & 0o777) for path in changes}
+        real_write = installer.atomic_write
+
+        def write(path, data, mode=0o600):
+            if path == self.codex / 'config.toml':
+                raise OSError('simulated restore failure')
+            real_write(path, data, mode)
+
+        with patch.object(installer, 'atomic_write', side_effect=write):
+            with contextlib.redirect_stdout(io.StringIO()):
+                with self.assertRaises(OSError):
+                    installer.restore(manifest, execute=True)
+        for path, (data, mode) in installed.items():
+            self.assertEqual(path.read_bytes(), data)
+            self.assertEqual(path.stat().st_mode & 0o777, mode)
+
 
 if __name__ == '__main__':
     unittest.main()

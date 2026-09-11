@@ -36,7 +36,7 @@ class ReleaseTests(unittest.TestCase):
     def test_archives_checksums_and_reproducibility(self):
         first = release.package(self.repo, self.base / 'first', 'v1.0.0')
         second = release.package(self.repo, self.base / 'second', 'v1.0.0')
-        for a, b in zip(first, second):
+        for a, b in zip(first, second, strict=True):
             self.assertEqual(a.read_bytes(), b.read_bytes())
         with tarfile.open(first[0]) as archive:
             self.assertEqual(archive.extractfile('codex-setup-v1.0.0/hello.txt').read(), b'hello\n')

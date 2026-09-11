@@ -29,7 +29,8 @@ def main():
     for path in skills:
         text = path.read_text()
         assert text.startswith('---\n'), path
-        frontmatter = text.split('---', 2)[1]
+        frontmatter, closing, _ = text[4:].partition('\n---\n')
+        assert closing, f'Missing closing frontmatter delimiter: {path}'
         assert re.search(r'^name: ' + re.escape(path.parent.name) + r'$', frontmatter, re.M), path
         assert re.search(r'^description: \S.+$', frontmatter, re.M), path
         assert len(text.encode()) < 32768, path
