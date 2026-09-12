@@ -8,6 +8,14 @@ ceremonies. System, developer, and explicit user instructions take precedence ov
 these defaults and skill guidance.
 
 Read the repository instructions, relevant code, and nearby examples before editing.
+On the first implementation task in a project without existing project guidance,
+use `codex-new-repo` to create a concise, evidence-based root AGENTS.md, then read
+it and continue the requested work. Existing AGENTS.md, AGENTS.override.md, or
+configured fallback guidance takes precedence; do not automatically rewrite it.
+Apply this only to a bounded repository or a project directory the user designated,
+never a general-purpose parent directory or a read-only question/review. Respect
+requests to skip onboarding and existing file-write restrictions. If onboarding
+is unavailable, continue any work already permitted and report the limitation.
 Keep the change focused, preserve unrelated work, and use the existing toolchain.
 For substantial work, briefly describe the approach, then execute it. Review the
 result against the requested outcome and check realistic failure paths. Run the

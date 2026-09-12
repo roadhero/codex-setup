@@ -10,12 +10,12 @@ Download a matching archive and SHA256SUMS from the release page. From the downl
 directory, compare the checksum for the archive you selected:
 
 ```sh
-shasum -a 256 codex-setup-v1.0.0.tar.gz   # macOS
-sha256sum codex-setup-v1.0.0.tar.gz      # Linux
+shasum -a 256 codex-setup-v1.0.1.tar.gz   # macOS
+sha256sum codex-setup-v1.0.1.tar.gz      # Linux
 ```
 
 It must equal that file's line in SHA256SUMS. Extract the archive, enter its
-`codex-setup-v1.0.0` directory, and preview installation:
+`codex-setup-v1.0.1` directory, and preview installation:
 
 ```sh
 python3 scripts/install.py
@@ -52,6 +52,29 @@ An unchanged install reports zero files. Existing custom assets require a delibe
 merge; the installer never guesses how to reconcile edited skills or agents.
 It does not delete files removed in a later release. If moving between versions,
 restore the preceding install first when practical, then install the new version.
+
+### Upgrading from v1.0.0 to v1.0.1
+
+This release changes `global/AGENTS.md` and `skills/codex-new-repo/SKILL.md`.
+The installer merges its global guidance block, but refuses an existing skill
+whose bytes differ, including an unchanged v1.0.0 copy. An ordinary upgrade preview
+therefore reports an asset conflict and writes nothing.
+
+If your installed files still match their backup manifests, restore the previous
+installation(s), newest first, using the commands below. Then preview and apply
+v1.0.1, including `--hooks` if you want the optional hook installed. Restart Codex
+after installation; review hook trust with `/hooks` if prompted.
+
+If restoration refuses later edits, preserve them. For a manual upgrade, back up
+the installed onboarding skill and compare it with both release versions. Only
+replace an unchanged v1.0.0 skill with the v1.0.1 skill after reviewing that diff;
+then preview/apply the installer to update global guidance. If the skill is
+customized, merge the skill and managed global guidance deliberately, retaining
+your changes. The installer will continue to reject customized asset differences;
+manual merging does not require a forced installer run.
+
+An installation that already has the exact v1.0.1 skill and global guidance needs
+no further global changes; its preview reports zero files.
 
 ## Backups and rollback
 
