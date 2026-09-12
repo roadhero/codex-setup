@@ -6,10 +6,14 @@ Never include machine-specific reports, credentials, or private backup manifests
 
 1. Prepare and review the version, changelog, notes, and relevant documentation.
 2. Run `python3 scripts/validate.py` and `python3 -m unittest discover -s tests -v`.
-3. Commit the complete change. Packaging refuses a dirty working tree.
-4. Run `python3 scripts/release.py` for a local archive/checksum preview.
-5. After publication is authorized, create an annotated `vX.Y.Z` tag on that commit
-   and push the branch/tag. The release workflow runs the cross-platform gate,
+3. Commit the complete change on a release branch and open a pull request against
+   main. Review the diff and resolve relevant findings; require successful checks
+   at the final PR revision before merging through the repository's normal policy.
+4. Update the local main checkout to the merged commit and run
+   `python3 scripts/release.py` for a local archive/checksum preview. Packaging
+   refuses a dirty working tree. Confirm VERSION and notes still match the release.
+5. After publication is authorized, create an annotated `vX.Y.Z` tag on that merged
+   commit and push the tag. The release workflow runs the cross-platform gate,
    verifies tag/VERSION/HEAD parity, creates the archives, and publishes matching notes.
 6. Verify the GitHub release target, assets, and downloaded checksums.
 
@@ -21,11 +25,11 @@ release for changed content.
 Manual recovery after verifying a clean tagged checkout:
 
 ```sh
-python3 scripts/release.py --tag v1.0.0
-gh release create v1.0.0 --verify-tag \
-  --title 'v1.0.0 — Codex engineering setup' \
-  --notes-file docs/releases/v1.0.0.md \
-  dist/codex-setup-v1.0.0.tar.gz dist/codex-setup-v1.0.0.zip dist/SHA256SUMS
+python3 scripts/release.py --tag v1.0.1
+gh release create v1.0.1 --verify-tag \
+  --title 'v1.0.1 — Codex engineering setup' \
+  --notes-file docs/releases/v1.0.1.md \
+  dist/codex-setup-v1.0.1.tar.gz dist/codex-setup-v1.0.1.zip dist/SHA256SUMS
 ```
 
 Archives come from Git blobs at HEAD, not loose working files. File order, ownership,

@@ -5,6 +5,12 @@ Native app-server startup accepted the installed configuration with
 `--strict-config`. Local prompt rendering discovered global guidance, this
 repository's project instructions, and installed workflow/platform skills.
 
+For v1.0.1 on 2026-09-12, native `codex debug prompt-input` inspection in an empty
+temporary directory confirmed discovery of the automatic-onboarding instructions
+and updated skill description without a profile. This verifies loaded context,
+not that every model task will follow the workflow. Structural validation, skill
+validation, and all 18 behavioral tests passed locally.
+
 Automated tests exercise configuration preservation, installation idempotency,
 backup/restoration, conflicting files, symlink refusal, instruction overrides,
 write failures, documented hook output, release archives, and integrity checks.

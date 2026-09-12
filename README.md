@@ -21,7 +21,7 @@ See [compatibility](docs/compatibility.md) for the tested baseline.
 ```sh
 git clone https://github.com/roadhero/codex-setup.git
 cd codex-setup
-git checkout v1.0.0
+git checkout v1.0.1
 python3 scripts/install.py             # preview
 python3 scripts/install.py --apply     # install with backups
 ```
@@ -31,13 +31,17 @@ Alternatively, download a versioned archive and SHA256SUMS from
 in [installation](docs/installation.md), and run the same installer from the
 extracted directory. No remote script is piped into a shell.
 
-Start a fresh Codex session after installation:
+Start a fresh Codex session in your project after installation:
 
 ```sh
-codex --profile setup-build
-codex --profile setup-review
-codex --profile setup-compute
+cd /path/to/project
+codex
 ```
+
+Profiles are optional: `--profile setup-build` explicitly selects workspace writes
+and on-request approvals, which are also this kit's global defaults.
+Use `--profile setup-review` for read-only review or `--profile setup-compute` for
+the compute profile. Your existing configuration can override the installed defaults.
 
 The installer preserves existing configuration, MCP connections, authentication,
 plugins, and unrelated skills. It adds missing defaults, appends a marked guidance
@@ -65,8 +69,16 @@ Read [STRUCTURE.md](STRUCTURE.md) for the complete layout.
 
 ## Project setup
 
-Ask Codex to use `$codex-new-repo` to inspect a repository and write actual project
-commands. For a static starter:
+With the current global guidance installed, start Codex in a project and describe
+your coding task. When project guidance is missing, Codex is instructed to create
+AGENTS.md from actual repository facts and continue your task automatically.
+Existing guidance is preserved; project trust still applies. This instruction-driven
+workflow is available starting in v1.0.1 and skips read-only questions/reviews.
+For an empty project, include the product and stack in your request; say "skip
+project setup" to opt out. No separate onboarding command is required.
+
+You can also ask Codex to use `$codex-new-repo` explicitly to inspect a repository
+and create or update its instructions. For a static starter:
 
 ```sh
 python3 scripts/install.py --project /absolute/path/to/repo --stack android
@@ -122,7 +134,7 @@ of verification are documented in [validation](docs/installation-verification.md
 - [Hooks](docs/hooks.md), [skills](docs/skills.md), and [agents](docs/agents.md)
 - [Troubleshooting](docs/troubleshooting.md) and [compatibility](docs/compatibility.md)
 - [Design decisions](docs/review.md) and [official sources](docs/sources.md)
-- [Release process](docs/releases.md), [changelog](CHANGELOG.md), and [v1.0.0 notes](docs/releases/v1.0.0.md)
+- [Release process](docs/releases.md), [changelog](CHANGELOG.md), and [v1.0.1 notes](docs/releases/v1.0.1.md)
 - [Contributing](CONTRIBUTING.md) and [security policy](SECURITY.md)
 
 MIT licensed. This is a community project, not an official OpenAI product.

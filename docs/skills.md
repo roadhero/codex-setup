@@ -10,7 +10,7 @@ or you can invoke them by name. They contain no mandatory external integrations.
 | `$engineering-android` | Lifecycle/state, coroutines, variants, persistence, device/release verification |
 | `$engineering-ios` | State/actors, Swift/Xcode toolchain, persistence, signing/device verification |
 | `$engineering-compute` | Native ownership, CUDA, numerics, parallelism, benchmarks, hardware constraints |
-| `$codex-new-repo` | Inspect and create project instructions and requested scaffolding |
+| `$codex-new-repo` | Onboard projects without guidance during implementation; explicitly create/merge instructions and requested scaffolding |
 | `$codex-quality-gate` | Run actual repository formatting, lint, type, test, and build commands |
 | `$codex-release-prep` | Prepare versions, notes, artifacts, and relevant release validation |
 | `$codex-reconcile-docs` | Identify or fix evidence-backed documentation drift |

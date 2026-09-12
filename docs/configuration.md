@@ -10,7 +10,9 @@ No model is pinned. Agents inherit the selected model and reasoning effort, exce
 for any explicit overrides you add. The built-in read-only review profile sets a
 sandbox default; project and command-line settings may override it.
 
-Profiles are separate files under Codex home:
+Plain `codex` loads the installed global instructions and skills, including
+automatic project onboarding. No profile is required. Profiles are optional,
+separate files under Codex home:
 
 - `setup-build.config.toml`: workspace writes, approvals on request.
 - `setup-review.config.toml`: read-only sandbox, approvals on request.
