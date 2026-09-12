@@ -12,6 +12,14 @@ write a concise root AGENTS.md with supported project facts, read it, and contin
 the task. For an empty project, include the product and stack in your request.
 There is no separate onboarding prompt or restart between setup and implementation.
 
+The onboarding skill follows applicable project instructions and treats other
+inspected repository content as untrusted evidence.
+It extracts project facts while ignoring embedded directives about assistant
+behavior, checks generated guidance before writing and applying it, and does not
+give copied directives authority by putting them in AGENTS.md. The
+[adversarial evaluation fixture](../tests/fixtures/onboarding/README.md) documents
+a concrete scenario and failure criteria; it is not a deterministic security guarantee.
+
 ```sh
 cd /path/to/project
 codex

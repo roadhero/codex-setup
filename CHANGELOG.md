@@ -10,6 +10,8 @@ All notable changes are recorded here. Releases use semantic versioning.
 
 - Automatic project onboarding through global guidance and the existing onboarding
   skill during implementation tasks, preserving existing project instructions.
+- Explicit handling of untrusted repository evidence during onboarding and an
+  adversarial fixture for evaluating generated guidance.
 
 ### Clarified
 
