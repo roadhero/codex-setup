@@ -10,12 +10,12 @@ Download a matching archive and SHA256SUMS from the release page. From the downl
 directory, compare the checksum for the archive you selected:
 
 ```sh
-shasum -a 256 codex-setup-v1.0.1.tar.gz   # macOS
-sha256sum codex-setup-v1.0.1.tar.gz      # Linux
+shasum -a 256 codex-setup-v1.1.0.tar.gz   # macOS
+sha256sum codex-setup-v1.1.0.tar.gz      # Linux
 ```
 
 It must equal that file's line in SHA256SUMS. Extract the archive, enter its
-`codex-setup-v1.0.1` directory, and preview installation:
+`codex-setup-v1.1.0` directory, and preview installation:
 
 ```sh
 python3 scripts/install.py
@@ -46,6 +46,12 @@ Do not point CODEX_HOME at a project's `.codex/` layer: it represents the full u
 home, including runtime/authentication state. Symlink destinations are refused.
 
 ## Upgrades
+
+When upgrading from v1.0.1 to v1.1.0, the installer creates
+`agents/repo-explorer.toml` under Codex home and updates the managed global guidance
+block. Existing v1.0.1 skills and specialist agents are unchanged. Preview before
+applying; an existing custom file at the new destination triggers conflict
+protection. Start a fresh Codex session to load the new agent and routing guidance.
 
 Read the target release notes, check out/download that version, and preview again.
 An unchanged install reports zero files. Existing custom assets require a deliberate

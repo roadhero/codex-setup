@@ -5,6 +5,12 @@ implement the smallest coherent change, review the diff, and verify behavior.
 One agent can perform all steps. Delegate bounded independent work when requested;
 assign clear file ownership and use separate worktrees for branch isolation.
 
+Broad, independent file-location and call-path searches can use `repo-explorer`
+under the global delegation instruction. Return concise evidence to the main
+thread, preserve useful parallel work, and leave simple lookups local. See
+[repository exploration](exploration.md). Design, correctness, and implementation
+remain with the appropriate reasoning role.
+
 Scale the process to the change. A wording correction does not need a design
 ceremony; a persistence migration needs realistic old-data and recovery checks.
 Continue already authorized work without demanding repeated approval. Surface

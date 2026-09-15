@@ -7,7 +7,7 @@ codex-setup/
 ├── AGENTS.md                   # Instructions for maintaining this repository
 ├── .codex/config.toml          # This repository's project layer
 ├── .github/workflows/          # Cross-platform gate and tagged release automation
-├── agents/                     # 23 standalone native TOML agents
+├── agents/                     # 23 specialist TOML agents plus repo-explorer
 ├── global/                     # Personal AGENTS.md and config defaults
 ├── profiles/                   # Build/review/compute profile files
 ├── skills/                     # Eight scoped SKILL.md workflows

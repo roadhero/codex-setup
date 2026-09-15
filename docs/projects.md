@@ -36,6 +36,13 @@ requests such as "skip project setup." This is an instruction-driven workflow,
 not a startup hook or an enforced guarantee. Project trust and permission prompts
 remain native Codex decisions.
 
+The existing global instruction/skill flow supplies project bootstrap directly;
+it does not need a second SessionStart hook or a separate approval ceremony.
+Populated projects keep their layout and receive only missing guidance. Empty
+projects use the product and stack requested by the user; CI and other scaffolding
+are added only when the actual task calls for them. Unknown commands or product
+facts are omitted or identified as unverified, never fabricated.
+
 Invoke `$codex-new-repo` explicitly to create or update project guidance on demand.
 The installer can instead append a starter block with
 `--project /path --stack web|android|ios|compute`.

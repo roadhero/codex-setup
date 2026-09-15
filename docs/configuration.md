@@ -6,8 +6,9 @@ agent defaults only when no agents table exists. Existing values and tables win.
 A modern `default_permissions` setting suppresses addition of the legacy sandbox
 and approval keys, preserving the user's selected permission profile.
 
-No model is pinned. Agents inherit the selected model and reasoning effort, except
-for any explicit overrides you add. The built-in read-only review profile sets a
+The main session and 23 specialist agents inherit the selected model and effort.
+The `repo-explorer` utility alone selects Terra with low reasoning for bounded
+lookups; see [model customization and fallback](exploration.md). The read-only review profile sets a
 sandbox default; project and command-line settings may override it.
 
 Plain `codex` loads the installed global instructions and skills, including

@@ -3,6 +3,10 @@
 Verified 2026-09-11 against the official Codex manual and local codex-cli 0.154.0.
 OpenAI's older developers.openai.com/codex URLs now redirect to these pages.
 
+Subagent configuration, model/effort precedence, native explorer naming, and
+delegation were rechecked against the refreshed official manual on 2026-09-15.
+The native model catalog lists `gpt-5.6-terra` with low reasoning support.
+
 | Surface | Official source | Choice in this kit |
 | --- | --- | --- |
 | Personal/project layers | https://learn.chatgpt.com/docs/config-file/config-basic | Merge global defaults, optional trusted project config |
@@ -18,8 +22,9 @@ OpenAI's older developers.openai.com/codex URLs now redirect to these pages.
 | CLI | https://learn.chatgpt.com/docs/developer-commands?surface=cli | Verify installed command flags before use |
 
 Local CLI help confirms file-based profiles, `--strict-config`, both supported
-approval values, and the full bypass flag. No model is pinned: model availability
-and reasoning support depend on the account and selected model. API model names
+approval values, and the full bypass flag. The main session and specialist agents
+inherit model/effort; the repository search utility selects Terra with low effort.
+Model availability and reasoning support depend on the account and selected model. API model names
 are not used to infer Codex account access. No experimental flags are enabled.
 
 CLI and IDE share local configuration. Hosted Codex needs repository instructions

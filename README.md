@@ -5,13 +5,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A complete engineering workspace for OpenAI Codex: personal and project
-instructions, 23 native specialist agents, eight focused skills, named profiles,
+instructions, 23 native specialist agents plus a search utility, eight focused skills, named profiles,
 project templates, an advisory edit hook, and a tested installer with backups.
 
 Keep reusable preferences global. Put concrete commands, architecture, hardware,
 and delivery constraints in the project. Install only what belongs at each level.
 The configuration follows [official OpenAI documentation](docs/sources.md), uses
-Codex's native formats, and inherits your selected model and reasoning settings.
+Codex's native formats. Reasoning agents inherit your selected model and effort;
+the bounded search utility uses `gpt-5.6-terra` with low reasoning.
 
 ## Quick start
 
@@ -21,7 +22,7 @@ See [compatibility](docs/compatibility.md) for the tested baseline.
 ```sh
 git clone https://github.com/roadhero/codex-setup.git
 cd codex-setup
-git checkout v1.0.1
+git checkout v1.1.0
 python3 scripts/install.py             # preview
 python3 scripts/install.py --apply     # install with backups
 ```
@@ -53,7 +54,7 @@ block, and refuses conflicting custom assets. See [installation and rollback](do
 | --- | --- |
 | [Global instructions](global/AGENTS.md) | Focused engineering agreements, task completion, Git hygiene, and verification |
 | [Configuration](global/config.toml) | Workspace sandbox, on-request approvals, live web search, bounded subagents |
-| [23 native agents](docs/agents.md) | Planning, implementation, review, QA, security, operations, delivery, and compute specialists |
+| [24 native agents](docs/agents.md) | 23 specialist roles plus a bounded read-only repository search utility |
 | [Eight skills](docs/skills.md) | Web, Android, iOS, compute, onboarding, quality gates, release preparation, and documentation reconciliation |
 | [Profiles](profiles/) | Separate build, review, and compute configuration files |
 | [Project templates](templates/) | Root/component instructions and trusted-project configuration |
@@ -98,9 +99,11 @@ commands, `$codex-release-prep` for release work, and `$codex-reconcile-docs` fo
 documentation drift. Platform skills are selected by task or invoked explicitly.
 
 Request specialist work when useful: “Have architect inspect the design and
-code-reviewer review the diff independently, then combine the findings.” No global
-instruction forces delegation. Read [workflow](docs/workflow.md) and
-[agent responsibilities](docs/agents.md).
+code-reviewer review the diff independently, then combine the findings.” Global
+guidance delegates broad, independent repository lookups to `repo-explorer` when
+useful; simple lookups stay local, and explicit requests not to delegate prevail.
+Read [repository exploration](docs/exploration.md), [workflow](docs/workflow.md),
+and [agent responsibilities](docs/agents.md).
 
 ## Optional hook
 
@@ -134,7 +137,7 @@ of verification are documented in [validation](docs/installation-verification.md
 - [Hooks](docs/hooks.md), [skills](docs/skills.md), and [agents](docs/agents.md)
 - [Troubleshooting](docs/troubleshooting.md) and [compatibility](docs/compatibility.md)
 - [Design decisions](docs/review.md) and [official sources](docs/sources.md)
-- [Release process](docs/releases.md), [changelog](CHANGELOG.md), and [v1.0.1 notes](docs/releases/v1.0.1.md)
+- [Release process](docs/releases.md), [changelog](CHANGELOG.md), and [v1.1.0 notes](docs/releases/v1.1.0.md)
 - [Contributing](CONTRIBUTING.md) and [security policy](SECURITY.md)
 
 MIT licensed. This is a community project, not an official OpenAI product.
