@@ -1,7 +1,8 @@
 # Native agents
 
-These roles use the current standalone TOML format. Model and reasoning inherit
-from the parent; no model or reasoning overrides are imposed.
+The 24 agents use the current standalone TOML format. The 23 specialist roles
+inherit model and reasoning from the parent. Only `repo-explorer`, a bounded
+search utility, selects `gpt-5.6-terra` with low reasoning.
 Read-only roles set `sandbox_mode = "read-only"`. Runtime permission overrides
 can still take precedence. QA/debugging inherit workspace permissions for test
 artifacts; their instructions limit changes to the assigned task.
@@ -24,7 +25,9 @@ artifacts; their instructions limit changes to the assigned task.
 
 Use a direct delegation request, such as: “Ask architect to inspect the design
 and code-reviewer to review the diff; wait for both.” Agent availability alone
-does not require delegation. Keep ownership explicit for concurrent writers.
+does not require delegation. Global guidance separately requests delegation for
+broad, independent lookups suited to `repo-explorer`. Keep ownership explicit for
+concurrent writers and honor requests not to delegate.
 
 Platform specialization is supplied by four focused skills and project context
 rather than duplicate Android/iOS agents. Compute skills retain numerical, GPU,
@@ -40,3 +43,16 @@ build, inference-boundary, and profiling concerns without assuming a workstation
 - `parallelism-engineer`: Design or diagnose CPU concurrency, multiprocessing, and NUMA behavior.
 - `python-engineer`: Implement numerical Python and Python/native integration changes.
 - `systems-engineer`: Prepare compute-host configuration and operational diagnostics.
+
+## Repository search utility
+
+`repo-explorer` locates files, symbols, and call paths, then returns concise
+file:line evidence and search coverage. It does not edit, execute project code,
+or make design/review decisions. Its name leaves Codex's built-in `explorer`
+available unchanged. See [exploration](exploration.md) for the delegation contract,
+model selection, permissions, and fallback behavior.
+
+All specialist roles, including documentation reconciliation and compute agents,
+continue to inherit the parent model. These tasks can require judgment beyond a
+simple lookup. The search utility is the only fixed-model exception, and both its
+model and effort are specified so an incompatible parent effort is not inherited.

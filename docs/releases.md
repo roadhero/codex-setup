@@ -25,11 +25,11 @@ release for changed content.
 Manual recovery after verifying a clean tagged checkout:
 
 ```sh
-python3 scripts/release.py --tag v1.0.1
-gh release create v1.0.1 --verify-tag \
-  --title 'v1.0.1 — Codex engineering setup' \
-  --notes-file docs/releases/v1.0.1.md \
-  dist/codex-setup-v1.0.1.tar.gz dist/codex-setup-v1.0.1.zip dist/SHA256SUMS
+python3 scripts/release.py --tag v1.1.0
+gh release create v1.1.0 --verify-tag \
+  --title 'v1.1.0 — Codex engineering setup' \
+  --notes-file docs/releases/v1.1.0.md \
+  dist/codex-setup-v1.1.0.tar.gz dist/codex-setup-v1.1.0.zip dist/SHA256SUMS
 ```
 
 Archives come from Git blobs at HEAD, not loose working files. File order, ownership,

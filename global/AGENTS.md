@@ -28,6 +28,15 @@ ordered. Delegate only when the user or applicable instructions request it and a
 bounded task can run independently. Give each writer clear file ownership; use
 separate worktrees when branch isolation is needed. Verify agents' evidence.
 
+For a broad repository lookup that needs many file reads and can run independently
+alongside useful local work, delegate one bounded search to `repo-explorer` when
+available. This is a scoped delegation instruction; respect higher-priority limits
+and requests not to delegate. Give it a concrete question and search boundaries;
+ask for a short answer, file:line evidence, and coverage gaps. Keep simple targeted
+lookups local. Do not repeat its scan while it works; inspect the decisive evidence
+before acting. Keep design, review, and implementation judgments with the relevant
+reasoning agent. If the utility or its model is unavailable, continue locally.
+
 Respect configured Git identity; do not invent an author or add unsolicited
 attribution trailers. Describe the actual product accurately, including AI tools
 when they are relevant. Preserve existing commits and local edits. Follow the

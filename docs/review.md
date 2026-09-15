@@ -33,6 +33,10 @@ CUDA, numerics, memory, Python/native integration, parallelism, inference, and
 workstation operations. Models and reasoning inherit from the calling session.
 The setup does not presume a particular GPU, framework, or deployment service.
 
+The `repo-explorer` utility is the sole fixed-model exception: bounded repository
+lookups use Terra with low reasoning and return concise evidence to the caller.
+It does not replace reasoning roles or imply lower total cost for every task.
+
 ## Make distribution verifiable
 
 VERSION is the release source of truth. Tags and release notes must agree.

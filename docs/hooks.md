@@ -23,3 +23,8 @@ For formatting, use `$codex-quality-gate`: it discovers the repository's pinned
 commands, scopes edits, and reports failures. Keep mandatory formatting checks and
 secret scanning in project CI/Git hooks. No universal shell parser or broad command
 allowlist is installed. See the [official hook contract](https://learn.chatgpt.com/docs/hooks).
+
+Project bootstrap already runs through global instructions and the onboarding
+skill, so no SessionStart hook is installed. The advisory hook does not reformat
+settings files. When formatting is requested, honor the project's ignore files
+and intentional generated or compact layouts rather than adding a global formatter.

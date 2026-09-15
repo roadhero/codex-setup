@@ -1,5 +1,13 @@
 # Validation
 
+The v1.1.0 explorer addition was checked on 2026-09-15 with Codex CLI 0.154.0.
+Native app-server startup accepted the installed configuration with `--strict-config`,
+and its model catalog listed Terra with low reasoning support. Prompt inspection
+confirmed the global routing instruction. That diagnostic does not include agent
+definitions, so it does not prove custom-agent discovery or execution. No live
+explorer task was run. All 18 behavioral tests and structural validation pass;
+CodeRabbit reviewed the 14 implementation/documentation files with zero findings.
+
 The v1.0.0 baseline was verified with Codex CLI 0.154.0 on macOS on 2026-09-11.
 Native app-server startup accepted the installed configuration with
 `--strict-config`. Local prompt rendering discovered global guidance, this
